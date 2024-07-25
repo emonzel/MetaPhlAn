@@ -44,8 +44,8 @@ class ConsensusMarker:
         seq = self.sequence.replace("*", "-")
         if trim_sequences != 0:
             seq = seq[trim_sequences: -trim_sequences]
-        return SeqRecord(Seq(seq), id=marker_name, description=marker_name)
-
+        return SeqRecord(Seq(str(self.sequence[trim_sequences:-trim_sequences]).replace(“*”, “-”).replace(‘-’, ‘N’)), id=marker_name, description=marker_name)
+        
     def get_polymorphisms(self):
         """ Gets the number of polymorphic positions in the marker
 
